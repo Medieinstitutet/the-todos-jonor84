@@ -1,5 +1,4 @@
-// import { MouseEvent } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 function ShowList() {
   let items = [
@@ -13,25 +12,27 @@ function ShowList() {
 
   return (
     <>
-      <h1>My todo list</h1>
-      {items.length === 0 && <p>No item found</p>}
-      <ul className="list-group">
-        {items.map((item, index) => (
-          <li
-            className={
-              selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item"
-            }
-            key={item}
-            onClick={() => {
-              setSelectedIndex(index);
-            }}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div className="container">
+        <h1>My todo list</h1>
+        {items.length === 0 && <p>No item found</p>}
+        <ul className="list-group">
+          {items.map((item, index) => (
+            <li
+              className={
+                selectedIndex === index
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
+              key={item}
+              onClick={() => {
+                setSelectedIndex(index);
+              }}
+            >
+              - {item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

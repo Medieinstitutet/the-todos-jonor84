@@ -1,5 +1,3 @@
-import React from "react";
-
 function ShowFooter() {
   return (
     <>
@@ -14,24 +12,21 @@ function ShowFooter() {
 
             <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
               <li className="ms-3">
-                <a className="text-body-secondary" href="#">
-                  <svg className="bi" width="24" height="24">
-                    <use xlink:href="#twitter"></use>
-                  </svg>
+                <a
+                  className="text-body-secondary"
+                  href="https://www.linkedin.com/in/jn-utvecklare"
+                  target="_blank"
+                >
+                  LinkedIn
                 </a>
               </li>
               <li className="ms-3">
-                <a className="text-body-secondary" href="#">
-                  <svg className="bi" width="24" height="24">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </a>
-              </li>
-              <li className="ms-3">
-                <a className="text-body-secondary" href="#">
-                  <svg className="bi" width="24" height="24">
-                    <use xlink:href="#facebook"></use>
-                  </svg>
+                <a
+                  className="text-body-secondary"
+                  href="https://github.com/jonor84"
+                  target="_blank"
+                >
+                  GitHub
                 </a>
               </li>
             </ul>
