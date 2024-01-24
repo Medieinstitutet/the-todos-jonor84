@@ -1,4 +1,5 @@
-import { MouseEvent } from "react";
+// import { MouseEvent } from "react";
+import { useState } from "react";
 
 function ShowList() {
   let items = [
@@ -6,16 +7,13 @@ function ShowList() {
     "Do the dishes",
     "Go shopping",
     "Clean car",
-    "Go for a walk",
+    "Take out the garbage",
   ];
-  let selectedIndex = 4;
-
-  // Event handler
-  const handleClick = (event: MouseEvent) => console.log(event);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
-      <h1>List</h1>
+      <h1>My todo list</h1>
       {items.length === 0 && <p>No item found</p>}
       <ul className="list-group">
         {items.map((item, index) => (
@@ -26,7 +24,9 @@ function ShowList() {
                 : "list-group-item"
             }
             key={item}
-            onClick={handleClick}
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
           >
             {item}
           </li>
