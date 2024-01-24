@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
 function ShowList() {
-  let items = [
+  const storedItems = JSON.parse(localStorage.getItem("todoItems")) || [
     "Clean house",
     "Do the dishes",
     "Go shopping",
     "Clean car",
     "Take out the garbage",
   ];
+  const [items, setItems] = useState(storedItems);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
