@@ -6,14 +6,20 @@ function ShowList() {
     useTodoContext();
   const [activeTab, setActiveTab] = useState("unfinished");
   const [filteredItems, setFilteredItems] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
+    const sortedItems = todoItems.sort((a, b) => {
+      const compareResult = a.text.localeCompare(b.text);
+      return sortOrder === "asc" ? compareResult : -compareResult;
+    });
+
     if (activeTab === "unfinished") {
-      setFilteredItems(todoItems.filter((item) => !item.finished));
+      setFilteredItems(sortedItems.filter((item) => !item.finished));
     } else {
-      setFilteredItems(todoItems.filter((item) => item.finished));
+      setFilteredItems(sortedItems.filter((item) => item.finished));
     }
-  }, [todoItems, activeTab]);
+  }, [todoItems, activeTab, sortOrder]);
 
   const handleMarkAsFinished = (item) => {
     markAsFinished(item);
@@ -25,6 +31,10 @@ function ShowList() {
 
   const handleRemoveItem = (item) => {
     removeItem(item);
+  };
+
+  const handleToggleSortOrder = () => {
+    setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
 
   return (
@@ -56,6 +66,7 @@ function ShowList() {
               key={item.text}
             >
               <div>
+                -{" "}
                 <span
                   className={
                     item.finished ? "text-decoration-line-through" : ""
@@ -94,6 +105,13 @@ function ShowList() {
           <p>No items</p>
         )}
       </ul>
+
+      <button
+        className="btn btn-secondary mt-3"
+        onClick={handleToggleSortOrder}
+      >
+        Change Sorting
+      </button>
     </div>
   );
 }
