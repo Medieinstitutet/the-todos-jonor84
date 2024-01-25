@@ -16,13 +16,15 @@ function ShowList() {
   }, [todoItems, activeTab]);
 
   const handleMarkAsFinished = (item) => {
-    console.log("Marking as finished:", item);
     markAsFinished(item);
   };
 
   const handleMarkAsUnfinished = (item) => {
-    console.log("Marking as unfinished:", item);
     markAsUnfinished(item);
+  };
+
+  const handleRemoveItem = (item) => {
+    removeItem(item);
   };
 
   return (
@@ -51,7 +53,7 @@ function ShowList() {
           filteredItems.map((item, index) => (
             <li
               className="list-group-item d-flex justify-content-between"
-              key={index}
+              key={item.text}
             >
               <div>
                 <span
@@ -81,7 +83,7 @@ function ShowList() {
                 )}
                 <button
                   className="btn btn-sm btn-danger"
-                  onClick={() => removeItem(index)}
+                  onClick={() => handleRemoveItem(item)}
                 >
                   Remove
                 </button>

@@ -34,8 +34,9 @@ export const TodoProvider = ({ children }) => {
       setTodoItems(updatedTodoItems);
     }
   };
-  const removeItem = (index) => {
-    // Will implement remove here later
+  const removeItem = (itemToRemove) => {
+    const updatedTodoItems = todoItems.filter((item) => item !== itemToRemove);
+    setTodoItems(updatedTodoItems);
   };
 
   return (
