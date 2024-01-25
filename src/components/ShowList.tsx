@@ -1,40 +1,98 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useTodoContext } from "./TodoContext";
 
 function ShowList() {
-  const storedItems = JSON.parse(localStorage.getItem("todoItems")) || [
-    "Clean house",
-    "Do the dishes",
-    "Go shopping",
-    "Clean car",
-    "Take out the garbage",
-  ];
-  const [items, setItems] = useState(storedItems);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const { todoItems, markAsFinished, markAsUnfinished, removeItem } =
+    useTodoContext();
+  const [activeTab, setActiveTab] = useState("unfinished");
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  useEffect(() => {
+    if (activeTab === "unfinished") {
+      setFilteredItems(todoItems.filter((item) => !item.finished));
+    } else {
+      setFilteredItems(todoItems.filter((item) => item.finished));
+    }
+  }, [todoItems, activeTab]);
+
+  const handleMarkAsFinished = (item) => {
+    console.log("Marking as finished:", item);
+    markAsFinished(item);
+  };
+
+  const handleMarkAsUnfinished = (item) => {
+    console.log("Marking as unfinished:", item);
+    markAsUnfinished(item);
+  };
 
   return (
-    <>
-      <div className="container">
-        <h1>My todo list</h1>
-        {items.length === 0 && <p>No item found</p>}
-        <ul className="list-group">
-          {items.map((item, index) => (
+    <div className="container mt-4">
+      <ul className="nav nav-tabs">
+        <li className="nav-item text-bold">
+          <button
+            className={`nav-link ${activeTab === "unfinished" ? "active" : ""}`}
+            onClick={() => setActiveTab("unfinished")}
+          >
+            Unfinished
+          </button>
+        </li>
+        <li className="nav-item text-bold">
+          <button
+            className={`nav-link ${activeTab === "finished" ? "active" : ""}`}
+            onClick={() => setActiveTab("finished")}
+          >
+            Finished
+          </button>
+        </li>
+      </ul>
+
+      <ul className="list-group mt-3">
+        {filteredItems.length > 0 ? (
+          filteredItems.map((item, index) => (
             <li
-              className={
-                selectedIndex === index
-                  ? "list-group-item active"
-                  : "list-group-item"
-              }
-              key={item}
-              onClick={() => {
-                setSelectedIndex(index);
-              }}
+              className="list-group-item d-flex justify-content-between"
+              key={index}
             >
-              - {item}
+              <div>
+                <span
+                  className={
+                    item.finished ? "text-decoration-line-through" : ""
+                  }
+                >
+                  {item.text}
+                </span>
+              </div>
+              <div>
+                {!item.finished && (
+                  <button
+                    className="btn btn-sm btn-success me-2"
+                    onClick={() => handleMarkAsFinished(item)}
+                  >
+                    Mark as Finished
+                  </button>
+                )}
+                {item.finished && (
+                  <button
+                    className="btn btn-sm btn-warning me-2"
+                    onClick={() => handleMarkAsUnfinished(item)}
+                  >
+                    Mark as Unfinished
+                  </button>
+                )}
+                <button
+                  className="btn btn-sm btn-danger"
+                  onClick={() => removeItem(index)}
+                >
+                  Remove
+                </button>
+              </div>
             </li>
-          ))}
-        </ul>
-      </div>
-    </>
+          ))
+        ) : (
+          <p>No items</p>
+        )}
+      </ul>
+    </div>
   );
 }
 

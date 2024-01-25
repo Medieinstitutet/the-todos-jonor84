@@ -24,3 +24,7 @@ body {
   padding: 10px;
   text-align: center; 
 }
+
+.text-bold {
+  font-weight: 700;
+}
