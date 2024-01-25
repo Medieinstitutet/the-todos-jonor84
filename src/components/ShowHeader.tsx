@@ -19,7 +19,7 @@ function ShowHeader() {
           to="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-          <span className="fs-4">Todo list for Jonor84</span>
+          <span className="fs-4">Todo list</span>
         </NavLink>
 
         <ul className="nav nav-pills">
@@ -39,7 +39,10 @@ function ShowHeader() {
             </NavLink>
           </li>
           <li className="nav-item">
-            <button className="nav-link" onClick={handleRestoreDefaultItems}>
+            <button
+              className="secondary btn btn-light nav-link"
+              onClick={handleRestoreDefaultItems}
+            >
               Restore Items
             </button>
           </li>
