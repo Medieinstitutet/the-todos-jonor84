@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 import { useTodoContext } from "./TodoContext";
 
 function ShowHeader() {
-  const { onRestoreItems } = useTodoContext();
+  const { restoreDefaultItems } = useTodoContext();
 
-  const restoreDefaultItems = () => {
+  const handleRestoreDefaultItems = () => {
     console.log("Restoring default items");
-    if (onRestoreItems) {
-      onRestoreItems();
+    if (restoreDefaultItems) {
+      restoreDefaultItems();
     }
   };
 
@@ -39,7 +39,7 @@ function ShowHeader() {
             </NavLink>
           </li>
           <li className="nav-item">
-            <button className="nav-link" onClick={restoreDefaultItems}>
+            <button className="nav-link" onClick={handleRestoreDefaultItems}>
               Restore Items
             </button>
           </li>

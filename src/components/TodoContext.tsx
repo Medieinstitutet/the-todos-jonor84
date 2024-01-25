@@ -3,13 +3,15 @@ import React, { createContext, useContext, useState } from "react";
 const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  const [todoItems, setTodoItems] = useState([
+  const defaultItems = [
     { text: "Clean house", finished: true },
     { text: "Do the dishes", finished: false },
     { text: "Go shopping", finished: false },
     { text: "Clean car", finished: false },
     { text: "Take out the garbage", finished: false },
-  ]);
+  ];
+
+  const [todoItems, setTodoItems] = useState(defaultItems);
 
   const markAsFinished = (item) => {
     const updatedTodoItems = [...todoItems];
@@ -34,14 +36,25 @@ export const TodoProvider = ({ children }) => {
       setTodoItems(updatedTodoItems);
     }
   };
+
   const removeItem = (itemToRemove) => {
     const updatedTodoItems = todoItems.filter((item) => item !== itemToRemove);
     setTodoItems(updatedTodoItems);
   };
 
+  const restoreDefaultItems = () => {
+    setTodoItems(defaultItems);
+  };
+
   return (
     <TodoContext.Provider
-      value={{ todoItems, markAsFinished, markAsUnfinished, removeItem }}
+      value={{
+        todoItems,
+        markAsFinished,
+        markAsUnfinished,
+        removeItem,
+        restoreDefaultItems,
+      }}
     >
       {children}
     </TodoContext.Provider>
