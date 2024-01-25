@@ -42,6 +42,10 @@ export const TodoProvider = ({ children }) => {
     setTodoItems(updatedTodoItems);
   };
 
+  const addItem = (newItem) => {
+    setTodoItems((prevItems) => [...prevItems, newItem]);
+  };
+
   const restoreDefaultItems = () => {
     setTodoItems(defaultItems);
   };
@@ -53,6 +57,7 @@ export const TodoProvider = ({ children }) => {
         markAsFinished,
         markAsUnfinished,
         removeItem,
+        addItem,
         restoreDefaultItems,
       }}
     >

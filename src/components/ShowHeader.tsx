@@ -19,7 +19,7 @@ function ShowHeader() {
           to="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-          <span className="fs-4">Todo list</span>
+          <h1 className="fs-4">Todo list</h1>
         </NavLink>
 
         <ul className="nav nav-pills">
@@ -30,12 +30,12 @@ function ShowHeader() {
               activeclassname="active"
               aria-current="page"
             >
-              Show list
+              Show List
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/add" className="nav-link">
-              Add item
+              Add Item
             </NavLink>
           </li>
           <li className="nav-item">

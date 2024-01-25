@@ -110,7 +110,7 @@ function ShowList() {
         className="btn btn-secondary mt-3"
         onClick={handleToggleSortOrder}
       >
-        Change Sorting
+        Change Sorting Order
       </button>
     </div>
   );
