@@ -1,26 +1,7 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/dygnPVIl)
-# Todos
+The script is a todo-list application built in React, designed to offer a smooth, efficient task management experience. It allows users to view, add, remove, and toggle tasks between completed and uncompleted states, making it highly versatile for managing daily activities. Completed tasks can be easily switched back to uncompleted, allowing flexible control over task statuses.
 
-En inlämningsuppgift för FSU23D. I denna uppgift skall ni alltså bygga en todo-lista i react. Ni har fått detta projekt som mall så att alla har någonting att utgå ifrån. Men, ingenting mer än själva projektet har gjorts. Nu skall ni, genom att använda alla koncept vi har pratat om hittills i kursen, skapa en todo-lista.
+The application utilizes localStorage to save the todo list, so all tasks persist seamlessly even after refreshing the page. State management is handled effectively through "lifting state up," enabling clear and organized communication between multiple components. The todo list can also be sorted in various ways, providing users with a customizable view to keep tasks organized according to their preferences.
 
-## Krav för G
+Overall, this project is a solid example of React fundamentals, with a clean code structure, strong state management, and user-friendly functionality.
 
-- Skapa en hårdkodad lista med egna todos (ni kan välja vilka todos som helst)
-- Presentera listan på skärmen med kontroll, kanske med hjälp av en ul/li
-- Ni skall kunna ta bort en todo ur listan
-- Ni behöver använda minst en komponent
-- Använda localStorage för att spara er lista. Jag vill inte att allting börjar om från början varje siduppdatering :)
-- Bra struktur på er kod. Detta betyder självförklarande variabelnamn och funktionsnamn samt inga kommentarer.
-
-## Krav för VG
-
-- Samtliga punkter för G
-- Ni använder er av minst tre komponenter
-- Ni använder er av Lifting State Up
-- Ni skall kunna skriva in egna todos via ett formulär
-- Ni skall visa även klara händelser och göra så att de kan bli "oklara" igen
-- Ni skall kunna sortera er lista på något sätt, hur och på vad är upp till er
-
-## Förslag
-
-Mitt förslag är att ni funderar över vilket betyg ni vill uppnå och börjar planera för de komponenter som behövs för just det. Fokusera på funktionalitet framför utseende. Såklart att ni får styla hur mycket ni vill, men det är funktionalitet jag kommer att bedöma i denna uppgift. 
+This project was developed as part of a student project at Medieinstitutet in 2024
